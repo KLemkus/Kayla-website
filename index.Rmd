@@ -1,0 +1,34 @@
+---
+title: "Kayla's Website"
+author: "Kayla Lemkus"
+date: "2026-02-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Welcome
+
+Welcome to my personal website for this course. This site was created using R Markdown and GitHub Pages as part of the Week 3 assignment.
+
+---
+
+## About Me
+
+I am a student interested in data analytics, ethics, and the social impact of machine learning systems. This website will be used to share my coursework and project development throughout the semester.
+
+---
+
+## Course Projects
+
+- [Final Project Ideas](final_project_ideas.html)
+
+---
+
+## GitHub
+
+All materials for this website are hosted on GitHub and published using GitHub Pages.
+
+File → Save

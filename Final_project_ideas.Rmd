@@ -1,0 +1,78 @@
+---
+title: "Final Project ideas"
+author: "Kayla Lemkus"
+date: "2026-02-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+title: "Final Project Ideas – Ethics, Privacy, and Machine Learning"
+author: "Kayla Lemkus"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Overview
+
+For my final project, I will analyze and critique three articles from *The New York Times Privacy Project*. These projects focus on how modern technologies collect, use, and deploy personal data, often raising ethical concerns related to privacy, fairness, and unintended harm. Using concepts from this course, including ethical frameworks and downstream harm in machine learning, I will evaluate each project and propose ethical considerations and improvements.
+
+---
+
+## Project 1: Location Tracking and Smartphone Data
+
+### Brief Summary
+This project explores how smartphone applications continuously collect precise location data from users and share it with advertisers, data brokers, and sometimes government agencies. While these systems are marketed as improving convenience and personalization, many users are unaware of how extensively their location data is tracked and monetized.
+
+### Ethical Concerns and Unintended Consequences
+A major concern is the lack of meaningful informed consent. Users often agree to data collection without fully understanding the long-term consequences. This data can be misused to surveil individuals, particularly marginalized populations, and may lead to stalking, discrimination, or loss of personal autonomy.
+
+### Source of Downstream Harm
+The source of harm stems from data collection practices and deployment context. Machine learning models trained on location data can amplify surveillance and reinforce power imbalances between corporations and individuals.
+
+### Recommendation Systems Application
+Recommendation systems use location data to target advertisements and services. While this can improve relevance, it can also reinforce invasive tracking practices. Ethical recommendation systems should minimize data retention, increase transparency, and prioritize user privacy.
+
+---
+
+## Project 2: Facial Recognition Technology
+
+### Brief Summary
+This project examines the growing use of facial recognition technology by law enforcement, governments, and private companies. These systems rely on machine learning models trained on large image datasets to identify individuals in public and private spaces.
+
+### Ethical Concerns and Unintended Consequences
+Facial recognition systems have been shown to be less accurate for women and people of color, leading to higher rates of false identification. This can result in wrongful arrests, discrimination, and erosion of public trust. The lack of transparency around where and how these systems are used further intensifies ethical concerns.
+
+### Source of Downstream Harm
+Downstream harm originates from biased training data and flawed system design. When biased outputs are used in high-stakes decision-making, they can directly harm individuals and communities.
+
+### Recommendation Systems Application
+Facial recognition systems can act as recommendation tools by flagging individuals for surveillance or investigation. Without ethical safeguards, these systems risk reinforcing existing biases. Fairness-aware algorithms and human oversight are necessary to reduce harm.
+
+---
+
+## Project 3: Children, Teenagers, and Social Media Algorithms
+
+### Brief Summary
+This project focuses on how social media platforms collect data from children and teenagers and use recommendation algorithms to shape the content they see. These systems are designed to maximize engagement, often without considering the developmental or psychological impact on young users.
+
+### Ethical Concerns and Unintended Consequences
+Unintended consequences include increased anxiety, addiction, and exposure to harmful or extreme content. Children and teens may lack the capacity to provide informed consent, raising serious ethical concerns about exploitation and responsibility.
+
+### Source of Downstream Harm
+The primary source of harm comes from optimization goals that prioritize engagement over well-being. Machine learning models reinforce harmful feedback loops by repeatedly promoting emotionally charged content.
+
+### Recommendation Systems Application
+Recommendation systems heavily influence what content young users consume. Ethical alternatives could include age-appropriate filters, reduced data collection, and algorithms designed to promote well-being rather than engagement.
+
+---
+
+## Conclusion
+
+These three projects highlight how data-driven technologies can create significant ethical challenges when privacy, fairness, and accountability are not prioritized. By applying ethical frameworks and principles discussed throughout the course, this final project will critically evaluate these systems and propose responsible alternatives for the use of machine learning in society.
