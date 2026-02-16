@@ -11,9 +11,9 @@
 
 <meta name="author" content="Kayla Lemkus" />
 
-<meta name="date" content="2026-02-02" />
+<meta name="date" content="2026-02-15" />
 
-<title>Kayla’s Website</title>
+<title>Loan Bias Analysis</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,38 +350,179 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Kayla’s Website</h1>
+<h1 class="title toc-ignore">Loan Bias Analysis</h1>
 <h4 class="author">Kayla Lemkus</h4>
-<h4 class="date">2026-02-02</h4>
+<h4 class="date">2026-02-15</h4>
 
 </div>
 
 
-<div id="welcome" class="section level2">
-<h2>Welcome</h2>
-<p>Welcome to my personal website for this course. This site was created
-using R Markdown and GitHub Pages as part of the Week 3 assignment.</p>
-<hr />
-</div>
-<div id="about-me" class="section level2">
-<h2>About Me</h2>
-<p>I am a student interested in data analytics, ethics, and the social
-impact of machine learning systems. This website will be used to share
-my coursework and project development throughout the semester.</p>
-<hr />
-</div>
-<div id="course-projects" class="section level2">
-<h2>Course Projects</h2>
+<div id="scenario-summary" class="section level2">
+<h2>Scenario Summary</h2>
+<p>ABC Bank is building a tool to determine which loan applications to
+refuse (or prices will vary) over the forecasted risk that a borrower
+will fail to repay debt on time.</p>
 <ul>
-<li><a href="final_project_ideas.html">Final Project Ideas</a></li>
+<li><strong>Goal:</strong> Raise Bank loan repayment rate<br />
+</li>
+<li><strong>Information:</strong> Previous loans and payments, credit
+reporting data, background checks<br />
+</li>
+<li><strong>Analysis:</strong> You will create an analysis model to
+calculate the risk of not getting paid back on time.<br />
+</li>
+<li><strong>Options:</strong> Deny loan or increase the
+rate/penalty.</li>
 </ul>
-<hr />
+<p>This article has addressed (1) bias and fairness risk, and (2) the
+identification of error types, and selection of equity-based
+metrics.</p>
+<p>The sources of bias in the underlying data may be a potential
+bias.</p>
+<p><strong>Historical selection bias (decision bias):</strong><br />
+The dataset probably contains only outcomes for those candidates who
+were previously approved. This leads to selection bias because there is
+no repayment data for those previously denied. As proposed through
+lifecycle harm frameworks, bias may arise from historical patterns found
+within data before modeling, (Suresh &amp; Guttag, 2021).</p>
+<p><strong>Measurement bias in credit reporting/background
+checks:</strong><br />
+Especially for those with limited traditional financial records, credit
+reports can have errors or incomplete histories. These structural
+mismatches can affect specific populations more than others and can
+result in biased risk estimate (Barocas, Hardt, &amp; Narayanan,
+2019).</p>
+<p><strong>Proxy bias due to co-existing features:</strong><br />
+Even when protective features (e.g., race, gender) are not present,
+other characteristics like ZIP code, stability of employment, or quality
+of education can work as proxies as previously mentioned as well (due to
+historical unfairness). This is a well-studied problem in algorithmic
+fairness studies (Barocas et al., 2019).</p>
+<p><strong>Label bias:</strong><br />
+If we’re targeting the variable “failure to repay on time,” we could
+encode structural disadvantages. Late payments are often the outcome of
+systemic barriers or economic shocks, not a lack of willingness to pay
+them back. As shown below, the type of bias built into outcome labels
+can lead to downstream damages in ML systems (Suresh &amp; Guttag,
+2021).</p>
+<p><strong>Data temporal change, or biased dataset:</strong><br />
+The economic condition changes over time. Models trained on older loan
+data may not generalize to the new macroeconomic circumstances found in
+these environments; thus different communities will be disadvantaged
+more than others.</p>
 </div>
-<div id="github" class="section level2">
-<h2>GitHub</h2>
-<p>All materials for this website are hosted on GitHub and published
-using GitHub Pages.</p>
-<p>File → Save</p>
+<div id="bias-implemented-within-the-data-science-pipeline" class="section level2">
+<h2>2. Bias Implemented within the Data Science Pipeline</h2>
+<p>System development and implementation can also be biased:</p>
+<p><strong>Problem framing bias:</strong><br />
+Rigidly identifying the goal simply as reducing repayment risk could
+easily lead to exclusion rather than financial inclusion. Research in
+fairness stresses that harm is likely to be created through the way
+objectives are set (Suresh &amp; Guttag, 2021).</p>
+<p><strong>Feature engineering bias:</strong><br />
+Structural variables (e.g., residential mobility, gaps in occupation)
+may discriminate against people with systematic instability.</p>
+<p><strong>Threshold selection bias:</strong><br />
+And yet even when the predictive model is precisely aligned, the
+decision threshold of credit rejection will be the threshold of who is
+excluded from lending. Policy decisions at this specific point may have
+uneven influence (Barocas et al., 2019).</p>
+<p><strong>Evaluation bias:</strong><br />
+If evaluation data reflects biased historic approval patterns, biases
+could remain masked.</p>
+<p><strong>Deployment feedback loops:</strong><br />
+Denied applicants do not generate repayment outcomes, meaning the system
+learns only from approved applicants. Such feedback loops tend to
+reinforce disparities over time (Suresh &amp; Guttag, 2021).</p>
+</div>
+<div id="dangers-of-fairness-in-deployment" class="section level2">
+<h2>3. Dangers of Fairness in Deployment</h2>
+<p><strong>Disparate denial rates:</strong><br />
+If certain people are given higher-than-average risk-denials as a result
+of more estimated income level and fewer opportunities for success, then
+some existing wealth gaps will have to get widened.</p>
+<p><strong>Disparate pricing:</strong><br />
+As risk is predicted to be higher and higher interest rates can
+therefore increase or lead to penalties, the financial load for certain
+populations will be multiplied.</p>
+<p><strong>Error asymmetry:</strong><br />
+If certain people have higher false positive rates than other people,
+qualified applicants from that segment receive more unfair
+dismissal.</p>
+<p><strong>Regulatory risk:</strong><br />
+Laws such as the Equal Credit Opportunity Act (ECOA) regulate credit
+lending, and its discrimination is prohibited in credit decisions.
+Disparate impact can pose ethical and legal risks.</p>
+</div>
+<div id="part-2-bias-metrics" class="section level1">
+<h1>Part 2 — Bias Metrics</h1>
+<div id="false-positive" class="section level2">
+<h2>1. False Positive</h2>
+<p>A <strong>false positive</strong> is when the model predicts that an
+applicant will not repay in a certain period of time (high risk) but in
+fact, the applicant would have repaid.</p>
+<p>A business owner or policymaker:</p>
+<blockquote>
+<p>This is a capable borrower mistakenly flagged as risky.</p>
+</blockquote>
+<p><strong>Harm/Cost:</strong><br />
+- To the individual: unfair denial or higher interest rates, lost
+economic opportunity.<br />
+- To the bank: loss of profitable customers, reputational risk and
+possible regulatory scrutiny.</p>
+<p>Disparities in false positive rate between groups are intrinsic to
+equalized odds in fairness literature (Hardt, Price, &amp; Srebro,
+2016).</p>
+</div>
+<div id="false-negative" class="section level2">
+<h2>2. False Negative</h2>
+<p>When the model predicts that an applicant will repay for the loans
+made (low risk), but the applicant actually does not.</p>
+<p><strong>To a policymaker or business owner:</strong></p>
+<blockquote>
+<p>This is a borrower with outstanding credit who defaults in the future
+or is late.</p>
+</blockquote>
+<p><strong>Harm/Cost:</strong><br />
+- A bank gets money lost, rates of delinquency rise.<br />
+- A borrower incurs potential debt spirals, fees, damage to credit.</p>
+<p>In high-stakes decision systems, it is critical to balance false
+positives and false negatives (Barocas et al., 2019).</p>
+</div>
+<div id="equity-focused-metric-recommendation" class="section level2">
+<h2>3. Equity-Focused Metric Recommendation</h2>
+<p>False positive rate (FPR) parity <strong>is a powerful candidate
+equity metric in this case</strong>.</p>
+<p>Why?</p>
+<p>More FPR for a specific group means that better-qualified individuals
+from that group are denied at higher rates. In lending, this manifests
+itself explicitly through disparate access to financial opportunity.</p>
+<p>This is congruent with the <strong>equalized odds framework</strong>
+which mandates the same error rates (FPR or otherwise) within groups
+(Hardt et al., 2016).</p>
+<p>But other measurements should also be tracked:</p>
+<ul>
+<li><strong>False Negative Rate (FNR)</strong> to prevent overly
+restrictive malign approvals.<br />
+</li>
+<li><strong>Group calibration</strong> if pricing decisions are based on
+predicted probabilities (Barocas et al., 2019).</li>
+</ul>
+<p>You would want a responsible system that takes into account numerous
+criteria of fairness &amp; outlines tradeoffs explicitly.</p>
+</div>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p>Barocas, S., Hardt, M., &amp; Narayanan, A. (2019). <em>Fairness and
+machine learning</em>. Retrieved from <a href="https://fairmlbook.org" class="uri">https://fairmlbook.org</a></p>
+<p>Hardt, M., Price, E., &amp; Srebro, N. (2016). Equality of
+opportunity in supervised learning. <em>Advances in Neural Information
+Processing Systems</em>, 29, 3315–3323.</p>
+<p>Suresh, H., &amp; Guttag, J. (2021). A framework for understanding
+sources of harm throughout the machine learning life cycle.
+<em>Proceedings of the 2021 ACM Conference on Equity and Access in
+Algorithms, Mechanisms, and Optimization (EAAMO ’21)</em>, 1–9. <a href="https://doi.org/10.1145/3465416.3483305" class="uri">https://doi.org/10.1145/3465416.3483305</a></p>
 </div>
 
 
